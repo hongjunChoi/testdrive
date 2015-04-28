@@ -48,20 +48,31 @@
           <img class="first-slide" src="/images/c5.jpeg" alt="First slide" style="width:100%; height:400px">
           <div class="container">
             <div class="carousel-caption">
-              <h2 style="color:#D5C4C4" ><b>Group , Connect, and be Enlightened </b></h2>
+              <h2 style="color:#D5C4C4" ><b>Group  </b></h2>
               <p><a class="btn btn-lg btn-primary" href="#" onclick="scroll()" role="button">Create your group</a></p>
             </div>
           </div>
         </div>
         <div class="item">
-          <img class="second-slide" src="/images/c1.jpg" alt="Second slide"  style="width:100%; height:400px">
+          <img class="second-slide" src="/images/c6.jpg" alt="Second slide"  style="width:100%; height:400px">
           <div class="container">
             <div class="carousel-caption">
-              <h2 style="color:#150303">See who's in your group and join the group! </h2>
+              <h2 style="color:#D8D8D8">Connect </h2>
               <p><a class="btn btn-lg btn-primary" href="#" onclick="scroll()" role="button">Create your group</a></p>
             </div>
           </div>
         </div>
+
+ 		<div class="item">
+          <img class="third-slide" src="/images/c1.jpg" alt="Third slide"  style="width:100%; height:400px">
+          <div class="container">
+            <div class="carousel-caption">
+              <h2 style="color:#D8D8D8">and be Enlightened. </h2>
+              <p><a class="btn btn-lg btn-primary" href="#" onclick="scroll()" role="button">Create your group</a></p>
+            </div>
+          </div>
+        </div>
+
       </div>
       <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
         <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
@@ -152,12 +163,16 @@
 <script type="text/javascript">
 		function create(){
 			var extra = $('input[name="dept"]:checked').val();
-
+			var my_name = $("#group_name").val();
+			var my_des = $("#des").val().concat(extra);
 			var mydata = {
-    			name : $("#group_name").val(),
-    			description: $("#des").val().concat(extra)
+    			name : my_name,
+    			description: my_des
 			};
-
+			if((my_name != null) && (my_des != null) ){
+				alert("Please insert all the fields");
+				return;
+			}
 			$.post( "<?php echo Yii::app()->createUrl('Site/create'); ?>", mydata,
 		        function(data,status){
 		            alert(" Your post was a " + status+ ". Please reload the page to see the contents!");
@@ -205,9 +220,9 @@
 						
 						var a = '"' + '#pin'+count+'"';
       					var b = '"' + 'pin' + count+ '"';
-						var out = '<div class="panel-heading"> <h4> Group : '+dept_name+'</h4></div><br>'+
+						var out = '<div class="panel-heading"> <h5> Group : '+dept_name+'</h5></div><br>'+
 
-							'<div class="panel-body btn"  data-toggle="collapse" aria-expanded="true" aria-controls='+b+'href='+a+'><p><h5> Group descriptions : '+ dept_des +'</h4></p> </div>'
+							'<div class="panel-body btn"  data-toggle="collapse" aria-expanded="true" aria-controls='+b+'href='+a+'><p><h6> Group descriptions : '+ dept_des +'</h6></p> </div>'
 
 							+'<br> <ul class="list-group collapse" id ='+ b +'>'+' <li class="list-group-item"> <b> group members </b> </li>';
 
