@@ -169,7 +169,7 @@
     			name : my_name,
     			description: my_des
 			};
-			if((my_name != null) && (my_des != null) ){
+			if((my_name == null) && (my_des == null) ){
 				alert("Please insert all the fields");
 				return;
 			}
